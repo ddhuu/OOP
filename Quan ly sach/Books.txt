@@ -1,0 +1,112 @@
+978-09112003
+1984
+George Orwell
+English
+1949
+8.99
+15
+2022-03-07 16:30:00
+978-15102003
+The Hobbit
+J.R.R. Tolkien
+English
+1937
+10.99
+7
+2022-03-06 11:45:00
+978-0061120084
+To Kill a Mockingbird
+Harper Lee
+English
+1960
+9.99
+10
+2022-03-08 08:15:00
+978-0743273565
+Angels & Demons
+Dan Brown
+English
+2000
+6.99
+20
+2022-03-07 14:20:00
+978-0375714573
+The Corrections
+Jonathan Franzen
+English
+2001
+12.99
+3
+2022-03-05 09:35:00
+978-0143127741
+Moby-Dick
+Herman Melville
+English
+1851
+7.99
+8
+2022-03-08 14:00:00
+978-0679723165
+Lolita
+Vladimir Nabokov
+English
+1955
+9.99
+5
+2022-03-06 16:50:00
+978-0141182605
+One Hundred Years of Solitude
+Gabriel Garcia Marquez
+Spanish
+1967
+11.99
+12
+2022-03-07 11:10:00
+978-0575081367
+The Name of the Wind
+Patrick Rothfuss
+English
+2007
+15.99
+2
+2022-03-05 18:20:00
+978-0345391803
+Jurassic Park
+Michael Crichton
+English
+1990
+8.99
+6
+2022-03-07 15:25:00
+978-0571315865
+The Buried Giant
+Kazuo Ishiguro
+English
+2015
+9.99
+4
+2022-03-06 13:40:00
+978-1400031702
+The Great Gatsby
+F. Scott Fitzgerald
+English
+1925
+7.99
+9
+2022-03-08 10:55:00
+978-0345803481
+Fifty Shades of Grey
+E.L. James
+English
+2011
+6.99
+18
+2022-03-07 09:15:00
+978-0316015844
+Twilight
+Stephenie Meyer
+English
+2005
+5.99
+25
+2022-03-05 17:05:00

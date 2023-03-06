@@ -1,0 +1,24 @@
+Customer name: Huu
+ISBN: 978-09112003
+Title: 1984
+Author: George Orwell
+Language : English
+Published Year: 1949
+Price: 8.99
+Stock Level: 13
+Input Date: 2022-03-07 16:30:00
+
+Sold date: 2023-03-06 14:55:54
+
+Customer name: Huu
+ISBN: 978-09112003
+Title: 1984
+Author: George Orwell
+Language : English
+Published Year: 1949
+Price: 8.99
+Stock Level: 14
+Input Date: 2022-03-07 16:30:00
+
+Sold date: 2023-03-06 14:55:54
+
