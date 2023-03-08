@@ -27,7 +27,7 @@ public:
 	int getSecond() const { return second; }
 	// Utility function
     static DateTime now();
-	static DateTime fromString(const std::string& str);
+	static DateTime fromString(const string& str);
 	// I/O stream
 	friend ostream& operator<<(ostream& os, const DateTime& dt);
 	friend istream& operator>> (istream& is,  DateTime& dt);

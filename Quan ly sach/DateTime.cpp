@@ -26,8 +26,8 @@ DateTime ::DateTime(time_t time) {
 DateTime::DateTime()
 {
 
-		std::time_t now = std::time(nullptr);
-		//std::tm* time = std::localtime(&now);
+		time_t now = time(nullptr);
+		//tm* time_info = localtime(&now);
 		tm time_info = {};
 		localtime_s(&time_info, &now);
 
@@ -45,11 +45,11 @@ DateTime DateTime:: now()
 	return  DateTime();
 
 }
-DateTime DateTime:: fromString(const std::string& str) {
-	std::stringstream ss(str);
-	std::tm tm_time = {};
-	ss >> std::get_time(&tm_time, "%Y-%m-%d %H:%M:%S");
-	time_t time = std::mktime(&tm_time);
+DateTime DateTime:: fromString(const string& str) {
+	stringstream ss(str);
+	tm tm_time = {};
+	ss >> get_time(&tm_time, "%Y-%m-%d %H:%M:%S");
+	time_t time = mktime(&tm_time);
 	return DateTime(time);
 }
 

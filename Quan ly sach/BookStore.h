@@ -5,20 +5,20 @@ using namespace std;
 class Bookstore{
 private :
 	string name;
-    std::vector<Book> books;
-    std::vector<Order> orders;
+    vector<Book> books;
+    vector<Order> orders;
 public:
 	//Constructor
 	Bookstore() {};
     //Utility method
-    void loadBooks(const std::string& filename, Bookstore& store);
+    void loadBooks(const string& filename, Bookstore& store);
     void addBook(const Book& book);
     void listBooks() ;
     void viewBooksByPriceAndName();
     void viewTopBooks(int k = 10);
-    bool bookExists(const std::string& isbn);
+    bool bookExists(const string& isbn);
     void addNewBook();
-    Book* findBookByISBN(const std::string& inputISBN);
+    Book* findBookByISBN(const string& inputISBN);
     void addToCart();
     void viewCart();
     void saveOrdersToFile();

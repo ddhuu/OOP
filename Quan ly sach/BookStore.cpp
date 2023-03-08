@@ -7,7 +7,7 @@ void Bookstore:: loadBooks(const string& filename, Bookstore& store) {
    ifstream inputFile(filename);
     if (inputFile.is_open()) {
        string line;
-        while (std::getline(inputFile, line)) {
+        while (getline(inputFile, line)) {
            string isbn = line;
            getline(inputFile, line);
            string title = line;
@@ -16,20 +16,20 @@ void Bookstore:: loadBooks(const string& filename, Bookstore& store) {
            getline(inputFile, line);
            string language = line;
            getline(inputFile, line);
-            int publishedYear;
+           int publishedYear;
            istringstream(line) >> publishedYear;
            getline(inputFile, line);
-            double price;
+           double price;
            istringstream(line) >> price;
            getline(inputFile, line);
-            int stockLevel;
+           int stockLevel;
            istringstream(line) >> stockLevel;
            getline(inputFile, line);
-            DateTime inputDate = DateTime::fromString(line);
-            Book book(isbn, title, author, language, publishedYear, price, stockLevel, inputDate);
-            if (inputFile.good()) {
+           DateTime inputDate = DateTime::fromString(line);
+           Book book(isbn, title, author, language, publishedYear, price, stockLevel, inputDate);
+           if (inputFile.good()) {
                 store.addBook(book);
-            }
+           }
         }
         inputFile.close();
     }
@@ -110,7 +110,7 @@ void Bookstore::addToCart() {
     cin.ignore();
    string inputISBN;
    cout << "Enter ISBN of the book: ";
-   getline(std::cin, inputISBN);
+   getline(cin, inputISBN);
 
     Book* foundBook = findBookByISBN(inputISBN);
     if (foundBook == nullptr) {
@@ -127,7 +127,7 @@ void Bookstore::addToCart() {
 
    string customerName;
    cout << "Enter customer name: ";
-   getline(std::cin, customerName);
+   getline(cin, customerName);
 
     Order newOrder(customerName, *foundBook);
     orders.push_back(newOrder);
@@ -171,7 +171,7 @@ void Bookstore::checkout() {
    string customerName;
    cout << "Enter customer name: ";
     cin.ignore();
-   getline(std::cin, customerName);
+   getline(cin, customerName);
 
     // Create a new order for each item in the cart and calculate the total
     for (auto& order : orders) {
@@ -215,10 +215,6 @@ void Bookstore::saveBooksToFile() {
         outputFile << books[i].getISBN() << "\n"
             << books[i].getTitle() << "\n"
             << books[i].getAuthor() << "\n"
-            // << "ISBN: " << book.getISBN() << "\n"
-             //<< "Category: " << book. << "\n"
-            // << "Publication Year: " << book.getPublicationYear() << "\n"
-            // << "Number of Pages: " << book.getNumPages() << "\n"
             << books[i].getLanguage() << "\n"
             << books[i].getPublishedYear() << "\n"
             << books[i].getPrice() << "\n"

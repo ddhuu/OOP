@@ -76,7 +76,7 @@ istream& operator>>(istream& is, Book& book) {
     book.inputDate = DateTime::now();
     return is;
 }
-ostream& operator<<(std::ostream& os, const Book& book) {
+ostream& operator<<(ostream& os, const Book& book) {
     os << "ISBN: " << book.isbn << "\n"
         << "Title: " << book.title << "\n"
         << "Author: " << book.author << "\n"
