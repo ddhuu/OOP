@@ -3,28 +3,28 @@
 void Bookstore::addBook(const Book& book) {
     books.push_back(book);
 }
-void Bookstore:: loadBooks(const std::string& filename, Bookstore& store) {
-    std::ifstream inputFile(filename);
+void Bookstore:: loadBooks(const string& filename, Bookstore& store) {
+   ifstream inputFile(filename);
     if (inputFile.is_open()) {
-        std::string line;
+       string line;
         while (std::getline(inputFile, line)) {
-            std::string isbn = line;
-            std::getline(inputFile, line);
-            std::string title = line;
-            std::getline(inputFile, line);
-            std::string author = line;
-            std::getline(inputFile, line);
-            std::string language = line;
-            std::getline(inputFile, line);
+           string isbn = line;
+           getline(inputFile, line);
+           string title = line;
+           getline(inputFile, line);
+           string author = line;
+           getline(inputFile, line);
+           string language = line;
+           getline(inputFile, line);
             int publishedYear;
-            std::istringstream(line) >> publishedYear;
-            std::getline(inputFile, line);
+           istringstream(line) >> publishedYear;
+           getline(inputFile, line);
             double price;
-            std::istringstream(line) >> price;
-            std::getline(inputFile, line);
+           istringstream(line) >> price;
+           getline(inputFile, line);
             int stockLevel;
-            std::istringstream(line) >> stockLevel;
-            std::getline(inputFile, line);
+           istringstream(line) >> stockLevel;
+           getline(inputFile, line);
             DateTime inputDate = DateTime::fromString(line);
             Book book(isbn, title, author, language, publishedYear, price, stockLevel, inputDate);
             if (inputFile.good()) {
@@ -34,7 +34,7 @@ void Bookstore:: loadBooks(const std::string& filename, Bookstore& store) {
         inputFile.close();
     }
     else {
-        std::cerr << "Failed to open file " << filename << std::endl;
+       cerr << "Failed to open file " << filename <<endl;
     }
 }
 void Bookstore::listBooks()  {
@@ -48,12 +48,12 @@ void Bookstore::listBooks()  {
 }
 void Bookstore:: viewBooksByPriceAndName() {
     // Sort books by price and name
-    std::sort(this->books.begin(), this->books.end(), Book::compareBooksByPriceAndName);
+   sort(this->books.begin(), this->books.end(), Book::compareBooksByPriceAndName);
 
     // Print the list of books
-    std::cout << "List of books sorted by price and name:" << std::endl;
+   cout << "List of books sorted by price and name:" <<endl;
     for (const auto& book : this->books) {
-        std::cout << book << std::endl;
+       cout << book <<endl;
     }
 }
 void Bookstore::viewTopBooks(int k ) {
@@ -66,7 +66,7 @@ void Bookstore::viewTopBooks(int k ) {
         cout << books[i].getTitle() << " - " << books[i].getInputDate() << endl;
     }
 }
-bool Bookstore:: bookExists(const std::string& isbn) {
+bool Bookstore:: bookExists(const string& isbn) {
     for (const auto& book : books) {
         if (book.getISBN() == isbn) {
             return true;
@@ -98,7 +98,7 @@ void Bookstore::addNewBook() {
         }
     }
 }
-Book* Bookstore::findBookByISBN(const std::string& inputISBN) {
+Book* Bookstore::findBookByISBN(const string& inputISBN) {
     for (Book& book : books) {
         if (book.getISBN() == inputISBN) {
             return &book;
@@ -108,58 +108,58 @@ Book* Bookstore::findBookByISBN(const std::string& inputISBN) {
 }
 void Bookstore::addToCart() {
     cin.ignore();
-    std::string inputISBN;
-    std::cout << "Enter ISBN of the book: ";
-    std::getline(std::cin, inputISBN);
+   string inputISBN;
+   cout << "Enter ISBN of the book: ";
+   getline(std::cin, inputISBN);
 
     Book* foundBook = findBookByISBN(inputISBN);
     if (foundBook == nullptr) {
-        std::cout << "Book not found." << std::endl;
+       cout << "Book not found." <<endl;
         return;
     }
 
     if (foundBook->getStockLevel() <= 0) {
-        std::cout << "Out of stock." << std::endl;
+       cout << "Out of stock." <<endl;
         return;
     }
 
     foundBook->setStockLevel(foundBook->getStockLevel() - 1);
 
-    std::string customerName;
-    std::cout << "Enter customer name: ";
-    std::getline(std::cin, customerName);
+   string customerName;
+   cout << "Enter customer name: ";
+   getline(std::cin, customerName);
 
     Order newOrder(customerName, *foundBook);
     orders.push_back(newOrder);
 
-    std::cout << "Book added to cart." << std::endl;
+   cout << "Book added to cart." <<endl;
 }
 
 void Bookstore:: viewCart()  {
     if (orders.empty()) {
-        std::cout << "No items in cart." << std::endl;
+       cout << "No items in cart." <<endl;
         return;
     }
 
-    std::cout << "Cart items:" << std::endl;
+   cout << "Cart items:" <<endl;
     double totalCost = 0;
     for (auto& order : orders) {
-        std::cout << order.getCustomerName() << " || " << order.getBook().getTitle() << " (" << order.getBook().getISBN() << "): "
-            << order.getTotalCost() << " || " << order.getOrderDay() << std::endl;
+       cout << order.getCustomerName() << " || " << order.getBook().getTitle() << " (" << order.getBook().getISBN() << "): "
+            << order.getTotalCost() << " || " << order.getOrderDay() <<endl;
         totalCost += order.getTotalCost();
     }
-    std::cout << "Total: " << std::fixed << std::setprecision(2) << totalCost << "$" << std::endl;
-    std::cout << "Thank you for shopping at our bookstore!" << std::endl;
+   cout << "Total: " <<fixed <<setprecision(2) << totalCost << "$" <<endl;
+   cout << "Thank you for shopping at our bookstore!" <<endl;
 }
 void Bookstore:: saveOrdersToFile() {
-    std::ofstream file("orders.txt", std::ios_base::trunc);
+   ofstream file("orders.txt",ios_base::trunc);
     if (!file) {
-        std::cerr << "failed to open orders file." << std::endl;
+       cerr << "failed to open orders file." <<endl;
         return;
     }
 
     for (auto order = orders.rbegin(); order != orders.rend(); ++order) {
-        file << *order << std::endl;
+        file << *order <<endl;
     }
 
     file.close();
@@ -168,10 +168,10 @@ void Bookstore:: saveOrdersToFile() {
 //Checkout function to initiate payment and save order to file
 void Bookstore::checkout() {
     double total = 0.0;
-    std::string customerName;
-    std::cout << "Enter customer name: ";
+   string customerName;
+   cout << "Enter customer name: ";
     cin.ignore();
-    std::getline(std::cin, customerName);
+   getline(std::cin, customerName);
 
     // Create a new order for each item in the cart and calculate the total
     for (auto& order : orders) {
@@ -188,7 +188,7 @@ void Bookstore::checkout() {
     // Clear the cart
     orders.clear();
 
-    std::cout << "Payment successful. Total: " << total << " VND." << std::endl;
+   cout << "Payment successful. Total: " << total << " VND." <<endl;
 }
 
 // Save orders to file in reverse chronological order
@@ -204,7 +204,7 @@ void Bookstore:: displayLowStockBooks(int stockThreshold ) {
     }
 }
 void Bookstore::saveBooksToFile() {
-    ofstream outputFile("book.txt", std::ios_base::trunc);
+    ofstream outputFile("book.txt",ios_base::trunc);
     if (!outputFile) {
         cerr << "Error: Unable to open output file." << endl;
         exit(1);
